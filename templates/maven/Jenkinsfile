@@ -7,9 +7,10 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: maven
-    image: maven:3-jdk-11-slim
-    command: ['cat']
+  - name: mvn
+    image: maven:3.3.9-jdk-8-alpine
+    command:
+    - cat
     tty: true
 """
         }
@@ -22,7 +23,9 @@ spec:
         }
         stage('Build') { 
             steps {
-                sh './mvnw -B -DskipTests clean package' 
+                container ('mvn') {
+                    sh 'mvn -B -DskipTests clean package' 
+                }
             }
         }
     }
