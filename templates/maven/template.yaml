@@ -1,0 +1,12 @@
+version: 1
+type: pipeline-template
+name: Maven Pipeline Job
+description: Basic Maven Pipeline
+parameters:
+  - name: github_repo
+    type: string
+    displayName: GitHub HTTPS repo endpoint
+  - name: github_creds
+    displayName: GitHub Credentials ID
+    type: credentials
+    defaultValue: github-creds-example

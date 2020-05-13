@@ -1,0 +1,29 @@
+pipeline {
+    agent {
+        kubernetes {
+        label 'mypod'
+        yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: maven
+    image: maven:3-jdk-11-slim
+    command: ['cat']
+    tty: true
+"""
+        }
+    }
+    stages {
+        stage('Checkout') { 
+            steps {
+                git credentialsId: "${github_creds}" , url: "${github_repo}" 
+            }
+        }
+        stage('Build') { 
+            steps {
+                sh 'mvn -B -DskipTests clean package' 
+            }
+        }
+    }
+}
