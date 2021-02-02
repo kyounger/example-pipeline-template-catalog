@@ -10,3 +10,6 @@ parameters:
     displayName: GitHub Credentials ID
     type: credentials
     defaultValue: github-creds-example
+  - name: test_value
+    type: string
+    displayName: A test value
