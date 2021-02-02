@@ -28,5 +28,12 @@ spec:
                 }
             }
         }
+        stage('Post-Build') { 
+            steps {
+                container ('mvn') {
+                  sh 'echo post'
+                }
+            }
+        }
     }
 }
