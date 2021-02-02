@@ -1,4 +1,4 @@
-name: ExampleCatalog
+name: ExampleCatalog-Master
 displayName: Kenny's CloudBees CI Example Catalog
 version: 1
 type: pipeline-template-catalog
